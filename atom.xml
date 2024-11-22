@@ -6,7 +6,7 @@
   <link href="https://www.meng.me/atom.xml" rel="self"/>
   
   <link href="https://www.meng.me/"/>
-  <updated>2024-04-29T12:41:04.027Z</updated>
+  <updated>2024-11-22T03:06:26.949Z</updated>
   <id>https://www.meng.me/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ubuntu常用命令记录</title>
+    <link href="https://www.meng.me/posts/40433.html"/>
+    <id>https://www.meng.me/posts/40433.html</id>
+    <published>2024-04-29T12:13:47.611Z</published>
+    <updated>2024-11-22T03:06:26.949Z</updated>
+    
+    <content type="html"><![CDATA[<p>linux-ubuntu常用命令记录，需要在服务器上进行操作时偶尔会忘记一些命令，将一些常用命令记录存档～<br><img src="/postsImages/2024/linux_instruction/firstMap.jpg" alt="ubuntuInstruction1"></p><span id="more"></span><h2 id="创建系统服务"><a href="#创建系统服务" class="headerlink" title="创建系统服务"></a>创建系统服务</h2><p>1、在目录 <code>/etc/systemd/system</code> 下创建service文件，例如A服务： <code>sudo vim A.service</code><br>2、文件内容：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=A Service</span><br><span class="line">Requires=A.service</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">ExecStart=/usr/bin/java -jar /mnt/java/A/A-0.0.1-SNAPSHOT.jar</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure><p>3、保存后使用 <code>sudo systemctl daemon-reload</code> 更新配置。<br>4、设置开机自启： <code>sudo systemctl enable xxx.service</code><br>5、实时查看日志：<code>sudo journalctl -f -u A.service</code><br>6、删除服务：</p><ul><li>禁用开机自启：<code>sudo systemctl disable A.service</code></li><li>停止服务：<code>sudo systemctl stop A.service</code></li><li>删除服务文件：<code>sudo rm /etc/systemd/system/A.service</code></li><li>重载配置：<code>sudo systemctl daemon-reload</code></li></ul><h2 id="服务常用命令"><a href="#服务常用命令" class="headerlink" title="服务常用命令"></a>服务常用命令</h2><p>1、查看服务状态：<code>sudo systemctl status A.service</code></p><blockquote><p>常用可替换：<code>start</code>、<code>stop</code>、<code>restart</code><br>2、日志相关：</p></blockquote><ul><li>查看实时日志：<code>sudo journalctl -f -u A.service</code></li><li>根据时间段查看日志：<code>sudo journalctl -u nudtserver --since &quot;2024-11-20 00:00:00&quot; --until &quot;2024-11-20 12:00:00&quot;</code></li><li>根据关键词查看日志：<code>sudo journalctl -u nudtserver | grep &quot;我是关键词&quot;</code></li><li>根据关键词且匹配上下5行查看日志：<code>sudo journalctl -u nudtserver | grep -C 5 &quot;我是关键词&quot;</code></li><li>根据时间段及关键词查看日志：<code>sudo journalctl -u nudtserver --since &quot;2024-11-20 00: 00:00&quot; --until &quot;2024-11-20 12: 00:00&quot;  | grep &quot;我是关键词&quot;</code></li></ul><h2 id="待补充"><a href="#待补充" class="headerlink" title="待补充"></a>待补充</h2><p>…</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;linux-ubuntu常用命令记录，需要在服务器上进行操作时偶尔会忘记一些命令，将一些常用命令记录存档～&lt;br&gt;&lt;img src=&quot;/postsImages/2024/linux_instruction/firstMap.jpg&quot; alt=&quot;ubuntuInstruction1&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    <category term="笔记本" scheme="https://www.meng.me/categories/%E7%AC%94%E8%AE%B0%E6%9C%AC/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>hexo升级指南</title>
